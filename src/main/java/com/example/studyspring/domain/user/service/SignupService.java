@@ -5,12 +5,14 @@ import com.example.studyspring.domain.user.dto.request.SignupRequest;
 import com.example.studyspring.domain.user.entity.User;
 import com.example.studyspring.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class SignupService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void execute(SignupRequest request) {
         if (userRepository.findByAccountId(request.getAccountId()).isPresent() ||
@@ -22,7 +24,7 @@ public class SignupService {
                 .accountId(request.getAccountId())
                 .name(request.getName())
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .build());
     }
 
