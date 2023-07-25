@@ -1,5 +1,6 @@
 package com.example.studyspring.user.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -23,5 +24,11 @@ public class User {
     @Column
     private String password;
 
+    @Builder
+    public User(String email, String accountId, String password) {
+        this.accountId = accountId;
+        this.email = email;
+        this.password = password;
+    }
 
 }
