@@ -14,5 +14,6 @@ public class SignupRequest {
     private String name;
     private String accountId;
     private String password;
+    private String email;
 
 }
