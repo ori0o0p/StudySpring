@@ -1,4 +1,4 @@
-package com.example.studyspring.user.dto.request;
+package com.example.studyspring.domain.user.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

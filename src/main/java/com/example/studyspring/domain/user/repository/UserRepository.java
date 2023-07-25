@@ -1,6 +1,6 @@
-package com.example.studyspring.user.repository;
+package com.example.studyspring.domain.user.repository;
 
-import com.example.studyspring.user.entity.User;
+import com.example.studyspring.domain.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

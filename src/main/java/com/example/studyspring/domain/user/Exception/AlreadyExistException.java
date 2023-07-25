@@ -1,7 +1,7 @@
-package com.example.studyspring.user.Exception;
+package com.example.studyspring.domain.user.Exception;
 
-import com.example.studyspring.error.CustomException;
-import com.example.studyspring.error.ErrorCode;
+import com.example.studyspring.global.error.CustomException;
+import com.example.studyspring.global.error.ErrorCode;
 
 public class AlreadyExistException extends CustomException {
 
