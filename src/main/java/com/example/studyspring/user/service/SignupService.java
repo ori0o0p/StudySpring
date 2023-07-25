@@ -1,5 +1,6 @@
 package com.example.studyspring.user.service;
 
+import com.example.studyspring.user.Exception.AlreadyExistException;
 import com.example.studyspring.user.dto.request.SignupRequest;
 import com.example.studyspring.user.entity.User;
 import com.example.studyspring.user.repository.UserRepository;
@@ -13,10 +14,10 @@ public class SignupService {
 
     public void execute(SignupRequest request) {
         if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
-            throw new RuntimeException();
+            throw AlreadyExistException.EXCEPTION;
         }
         else if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new RuntimeException();
+            throw AlreadyExistException.EXCEPTION;
         }
 
         userRepository.save(User.builder()
