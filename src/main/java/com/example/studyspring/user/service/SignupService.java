@@ -13,13 +13,11 @@ public class SignupService {
     private final UserRepository userRepository;
 
     public void execute(SignupRequest request) {
-        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
+        if (userRepository.findByAccountId(request.getAccountId()).isPresent() ||
+                userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw AlreadyExistException.EXCEPTION;
         }
-        else if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw AlreadyExistException.EXCEPTION;
-        }
-
+        
         userRepository.save(User.builder()
                 .accountId(request.getAccountId())
                 .name(request.getName())
