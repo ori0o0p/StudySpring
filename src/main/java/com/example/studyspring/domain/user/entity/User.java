@@ -17,9 +17,9 @@ public class User {
 
     @Column
     private String name;
-    @Column
+    @Column(unique = true)
     private String email;
-    @Column
+    @Column(unique = true)
     private String accountId;
     @Column
     private String password;
