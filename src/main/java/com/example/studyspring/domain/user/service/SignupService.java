@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SignupService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder encoder;
 
     public void execute(SignupRequest request) {
         if (userRepository.findByAccountId(request.getAccountId()).isPresent() ||
@@ -24,7 +24,7 @@ public class SignupService {
                 .accountId(request.getAccountId())
                 .name(request.getName())
                 .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
+                .password(encoder.encode(request.getPassword()))
                 .build());
     }
 
