@@ -18,13 +18,17 @@ import java.util.Date;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-public class JwtService {
+public class JwtProvider {
 
     @Value("")
     private String secretKey;
 
     public String createAccessToken(String value) {
         return createToken(value, "access", 720L);
+    }
+
+    public String createRefreshToken(String value) {
+        return createToken(value, "refresh", 7200L);
     }
 
     public String createToken(String email, String type, Long exp) {
