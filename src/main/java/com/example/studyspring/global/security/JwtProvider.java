@@ -1,6 +1,7 @@
 package com.example.studyspring.global.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
@@ -51,8 +52,12 @@ public class JwtProvider {
         return false;
     }
 
-    public Claims parseClaims(String token){
-        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+    private Claims parseClaims(String token) {
+        try {
+            return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        } catch (JwtException e) {
+            log.error(" ");
+        }
 
     }
 
