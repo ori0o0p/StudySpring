@@ -1,5 +1,6 @@
 package com.example.studyspring.global.security;
 
+import com.example.studyspring.global.exception.InvalidTokenException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -56,7 +57,7 @@ public class JwtProvider {
         try {
             return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         } catch (JwtException e) {
-            log.error(" ");
+            throw InvalidTokenException.EXCEPTION;
         }
 
     }
