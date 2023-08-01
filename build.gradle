@@ -40,6 +40,9 @@ dependencies {
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     testImplementation 'org.springframework.security:spring-security-test'
 
+    // mariadb
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
 }
 
 tasks.named('test') {
